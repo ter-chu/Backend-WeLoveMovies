@@ -32,7 +32,7 @@ function listTheater (movieId) {
     .join ("theaters as t", "mt.theater_id", "t.theater_id")
     .select("mt.theater_id", "t.name", "t.address_line_1", "t.address_line_2", "t.city", "t.state", "t.zip", "t.created_at", "t.updated_at", "mt.is_showing", "mt.movie_id")
     .where({"mt.movie_id": movieId})
-    .groupBy("mt.theater_id")
+    .andWhere({"mt.is_showing": true})
 }
 
 function listReviews (movieId) {
